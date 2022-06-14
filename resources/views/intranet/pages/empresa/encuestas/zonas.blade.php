@@ -9,8 +9,9 @@
             <div class="row">
               <div class="col-6"><h5 class="mb-0">Zonas</h5></div>
               <div class="col-6" style="text-align: right">
-                <a href="{{ route('sliders.craete')}}" class="btn btn-success">Nueva Zona</a>
-                <a href="#" class="btn btn-info">Exportar</a>
+                <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva Zona</button>
+                {{--<a href="{{ route('sliders.craete')}}" class="btn btn-success">Nueva Zona</a>
+                <a href="#" class="btn btn-info">Exportar</a>--}}
                 <!--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>-->
               </div>
             </div>
@@ -25,6 +26,7 @@
               <thead class="thead-light">
                 <tr>
                   <th>Acciones</th>
+                  <th>ID</th>
                   <th>Departamentos</th>
                   <th>Provincias</th>
                   <th>Distritos</th>
@@ -96,6 +98,65 @@
       </div>
     </footer>-->
   </div>
+
+  <!-- Modal Crear-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Importar Distritos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('distritos.import')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Departamento</label>
+                        <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias()">
+                            @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-12">
+                        <label for="">Provincia</label>
+                        <select name="idProvincia" id="idProvincia" class="form-control" onchange="getDistritos()">
+                            @foreach ($provincias as $provincia)
+                            
+                            @endforeach
+                        </select>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-12">
+                        <label for="">Distrito</label>
+                        <select name="idDistrito" id="idDistrito" class="form-control">
+                            @foreach ($distritos as $distrito)
+                            
+                            @endforeach
+                        </select>
+                    </div>
+                  </div><br>
+              <div class="row">
+                <div class="col-12">
+                  <label for="">Zona</label>
+                  <input type="text" name="zona" placeholder="Zona" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn bg-gradient-primary">Crear</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('script')
@@ -121,5 +182,52 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+    </script>
+    <script>
+      function getProvincias(){
+        let idDepartamento = $('#idDepartamento').val();
+        let ip = window.location.origin;
+        console.log('la ip es : '+ip);
+        console.log('la id del departamento es: '+idDepartamento);
+        $.ajax({
+          url: ip+"/getProvincias/"+idDepartamento,
+          type: 'GET',
+          dataType: 'json', // added data type
+          success: function(res) {
+            var fila = "";
+            for (let i = 0; i < res.length; i++) {
+              fila += '<option value="'+res[i].id+'">'+res[i].provincia+'</option>';
+              
+            }
+            $("#idProvincia option").remove();
+            $("#idProvincia").append(fila);
+              //console.log(res[0]);
+              //alert(res);
+          }
+        })
+      }
+
+      function getDistritos(){
+        let idProvincia = $('#idProvincia').val();
+        let ip = window.location.origin;
+        console.log('la ip es : '+ip);
+        console.log('la id del provincia es: '+idProvincia);
+        $.ajax({
+          url: ip+"/getDistritos/"+idProvincia,
+          type: 'GET',
+          dataType: 'json', // added data type
+          success: function(res) {
+            var fila = "";
+            for (let i = 0; i < res.length; i++) {
+              fila += '<option value="'+res[i].id+'">'+res[i].distrito+'</option>';
+              
+            }
+            $("#idDistrito option").remove();
+            $("#idDistrito").append(fila);
+              //console.log(res[0]);
+              //alert(res);
+          }
+        })
+      }
     </script>
 @endsection

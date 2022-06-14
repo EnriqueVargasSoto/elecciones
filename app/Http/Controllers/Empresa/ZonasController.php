@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Empresa;
 
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\DistritosImport;
-use Illuminate\Http\Request;
 use App\Models\Departamento;
-use App\Models\Provincia;
 use App\Models\Distrito;
+use App\Models\Provincia;
+use Illuminate\Http\Request;
+use App\Models\Zona;
 
-class DistritosController extends Controller
+class ZonasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +18,11 @@ class DistritosController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::where('estado', 'activo')->get();
-        $provincias = Provincia::where('estado','activo')->get();
-        $distritos = Distrito::where('estado','activo')->get();
-        return view('intranet.pages.empresa.encuestas.distritos')->with(compact('departamentos','provincias', 'distritos'));
+        $departamentos = Departamento::where('estado','activo')->get();
+        $provincias = Provincia::where('estado', 'activo')->get();
+        $distritos = Distrito::where('estado', 'activo')->get();
+        $zonas = Zona::where('estado','activo')->get();
+        return view('intranet.pages.empresa.encuestas.zonas')->with(compact('departamentos', 'provincias', 'distritos', 'zonas'));
     }
 
     /**
@@ -88,26 +88,6 @@ class DistritosController extends Controller
      */
     public function destroy($id)
     {
-        $distrito = Distrito::find($id);
-
-        if ($distrito->estado === 'activo') {
-            $distrito->estado = 'inactivo';
-        } else {
-            $distrito->estado = 'activo';
-        }
-        
-    }
-
-    public function import(Request $request){
-
-        //dd($request->hasFile('departamentos'));
-        $import = new DistritosImport();
-        Excel::import($import, request()->file('distritos'));
-        return back();
-    }
-
-    public function getDistritos($id){
-        $distritos = Distrito::where('idProvincia',$id)->where('estado','activo')->get();
-        return response()->json($distritos);
+        //
     }
 }

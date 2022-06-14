@@ -9,8 +9,9 @@
             <div class="row">
               <div class="col-6"><h5 class="mb-0">Provincias</h5></div>
               <div class="col-6" style="text-align: right">
-                <a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Provincias</a>
-                <a href="#" class="btn btn-info">Exportar</a>
+                <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Importar Provincias</button>
+                {{--<a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Provincias</a>
+                <a href="#" class="btn btn-info">Exportar</a>--}}
                 <!--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>-->
               </div>
             </div>
@@ -32,18 +33,19 @@
                 </tr>
               </thead>
               <tbody>
-                {{--@foreach ($sliders as $key => $slider)
+                @foreach ($provincias as $key => $provincia)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('sliders.edit', $slider->id)}}" class="btn btn-success"> Editar </a>
-                        <a href="{{ route('sliders.delete', $slider->id)}}" class="btn btn-danger"> Eliminar </a>
+                        <a href="{{ route('provincias.delete', $provincia->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
                       <td class="text-sm font-weight-normal">{{$key+1}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->nombre}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->orden}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->url}}</td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $dep = App\Models\Departamento::find($provincia->idDepartamento); ?>
+                        {{$dep->departamento}}
+                    </td>
+                      <td class="text-sm font-weight-normal">{{$provincia->provincia}}</td>
                     </tr>
-                @endforeach--}}
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -106,9 +108,19 @@
               <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('departamentos.import')}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('provincias.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
+                {{--<div class="row">
+                    <div class="col-12">
+                        <label for="">Departamento</label>
+                        <select name="tipo" id="" class="form-control">
+                            @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div><br>--}}
               <div class="row">
                 <div class="col-12">
                   <input type="file" name="provincias" placeholder="Importar Provincias" class="form-control">

@@ -9,8 +9,9 @@
             <div class="row">
               <div class="col-6"><h5 class="mb-0">Distritos</h5></div>
               <div class="col-6" style="text-align: right">
-                <a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Distritos</a>
-                <a href="#" class="btn btn-info">Exportar</a>
+                <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Importar Provincias</button>
+                {{--<a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Distritos</a>
+                <a href="#" class="btn btn-info">Exportar</a>--}}
                 <!--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>-->
               </div>
             </div>
@@ -25,24 +26,30 @@
               <thead class="thead-light">
                 <tr>
                   <th>Acciones</th>
+                  <th>ID</th>
                   <th>Departamentos</th>
                   <th>Provincias</th>
                   <th>Distritos</th>
                 </tr>
               </thead>
               <tbody>
-                {{--@foreach ($sliders as $key => $slider)
+                @foreach ($distritos as $key => $distrito)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('sliders.edit', $slider->id)}}" class="btn btn-success"> Editar </a>
-                        <a href="{{ route('sliders.delete', $slider->id)}}" class="btn btn-danger"> Eliminar </a>
+                        <a href="{{ route('sliders.delete', $distrito->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
                       <td class="text-sm font-weight-normal">{{$key+1}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->nombre}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->orden}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->url}}</td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $dep = App\Models\Departamento::find($distrito->idDepartamento); ?>
+                        {{$dep->departamento}}
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $prov = App\Models\Provincia::find($distrito->idProvincia); ?>
+                        {{$prov->provincia}}
+                      </td>
+                      <td class="text-sm font-weight-normal">{{$distrito->distrito}}</td>
                     </tr>
-                @endforeach--}}
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -94,6 +101,43 @@
         </div>
       </div>
     </footer>-->
+  </div>
+  <!-- Modal Crear-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Importar Distritos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('distritos.import')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+                {{--<div class="row">
+                    <div class="col-12">
+                        <label for="">Departamento</label>
+                        <select name="tipo" id="" class="form-control">
+                            @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div><br>--}}
+              <div class="row">
+                <div class="col-12">
+                  <input type="file" name="distritos" placeholder="Importar Distritos" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn bg-gradient-primary">Crear</button>
+            </div>
+        </form>
+      </div>
+    </div>
   </div>
 @endsection
 

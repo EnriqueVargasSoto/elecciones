@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Empresa;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProvinciasImport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Departamento;
@@ -85,6 +87,28 @@ class ProvinciasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $provincia = Provincia::find($id);
+        if ($provincia->estado === 'activo') {
+            $provincia->estado = 'inactivo';
+        } else {
+            $provincia->estado = 'activo';
+        }
+        $provincia->save();
+
+        return back();
+        
+    }
+
+    public function import(Request $request){
+
+        //dd($request->hasFile('departamentos'));
+        $import = new ProvinciasImport();
+        Excel::import($import, request()->file('provincias'));
+        return back();
+    }
+
+    public function getProvincias($id){
+        $provincias = Provincia::where('idDepartamento',$id)->where('estado','activo')->get();
+        return response()->json($provincias);
     }
 }

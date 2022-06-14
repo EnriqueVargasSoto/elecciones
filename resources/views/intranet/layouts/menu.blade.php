@@ -97,7 +97,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#elecciones" class="nav-link {{ (request()->is('departamentos')) || (request()->is('provincias')) || (request()->is('distritos')) ? 'active' : '' }}" aria-controls="elecciones" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#elecciones" class="nav-link {{ (request()->is('departamentos')) || (request()->is('provincias')) || (request()->is('distritos')) || (request()->is('zonas')) ? 'active' : '' }}" aria-controls="elecciones" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                             <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                         </div>
@@ -107,32 +107,44 @@
                         <ul class="nav ms-4">
                             <li class="nav-item ">
                                 <a class="nav-link  {{ (request()->is('departamentos')) ? 'active' : '' }}" href="{{ route('departamentos.index')}}">
-                                    <span class="sidenav-mini-icon"> DE </span>
+                                    <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Departamentos <b class="caret"></b></span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link {{ (request()->is('provincias')) ? 'active' : '' }}" href="{{ route('provincias.index')}}">
-                                    <span class="sidenav-mini-icon"> RS </span>
+                                    <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Provincias <b class="caret"></b></span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link {{ (request()->is('distritos')) ? 'active' : '' }}" href="{{ route('distritos.index')}}">
-                                    <span class="sidenav-mini-icon"> S </span>
+                                    <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Distritos <b class="caret"></b></span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ (request()->is('publicaciones')) ? 'active' : '' }}" href="{{ route('publicaciones.index')}}">
-                                    <span class="sidenav-mini-icon"> S </span>
+                                <a class="nav-link {{ (request()->is('zonas')) ? 'active' : '' }}" href="{{ route('zonas.index')}}">
+                                    <span class="sidenav-mini-icon"> Z </span>
                                     <span class="sidenav-normal"> Zonas <b class="caret"></b></span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ (request()->is('botones')) ? 'active' : '' }}" href="{{ route('botones.index')}}">
-                                    <span class="sidenav-mini-icon"> S </span>
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal"> Candidatos <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> E </span>
                                     <span class="sidenav-normal"> Encuestas <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> R </span>
+                                    <span class="sidenav-normal"> Reportes <b class="caret"></b></span>
                                 </a>
                             </li>
                             {{--<li class="nav-item ">

@@ -19,6 +19,7 @@ use App\Http\Controllers\Empresa\SubpublicacionController;
 use App\Http\Controllers\Empresa\DepartamentosController;
 use App\Http\Controllers\Empresa\ProvinciasController;
 use App\Http\Controllers\Empresa\DistritosController;
+use App\Http\Controllers\Empresa\ZonasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,13 @@ Route::post('departamentos-store', [DepartamentosController::class, 'import'])->
 route::get('departamento-cambia-estado/{id}', [DepartamentosController::class, 'destroy'])->name('departamentos.delete');
 
 Route::get('provincias', [ProvinciasController::class, 'index'])->name('provincias.index');
-
+Route::post('provincias-store', [ProvinciasController::class, 'import'])->name('provincias.import');
+route::get('provincias-cambia-estado/{id}', [ProvinciasController::class, 'destroy'])->name('provincias.delete');
+route::get('getProvincias/{id}', [ProvinciasController::class, 'getProvincias']);
 
 Route::get('distritos', [DistritosController::class, 'index'])->name('distritos.index');
+Route::post('distritos-store', [DistritosController::class, 'import'])->name('distritos.import');
+route::get('distritos-cambia-estado/{id}', [DistritosController::class, 'destroy'])->name('distritos.delete');
+route::get('getDistritos/{id}', [DistritosController::class, 'getDistritos']);
+
+Route::get('zonas', [ZonasController::class, 'index'])->name('zonas.index');
