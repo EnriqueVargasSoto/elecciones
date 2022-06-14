@@ -101,6 +101,60 @@
                         <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                             <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                         </div>
+                        <span class="nav-link-text ms-1">Ubigeo</span>
+                    </a>
+                    <div class="collapse " id="elecciones">
+                        <ul class="nav ms-4">
+                            <li class="nav-item ">
+                                <a class="nav-link  {{ (request()->is('departamentos')) ? 'active' : '' }}" href="{{ route('departamentos.index')}}">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Departamentos <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ (request()->is('provincias')) ? 'active' : '' }}" href="{{ route('provincias.index')}}">
+                                    <span class="sidenav-mini-icon"> P </span>
+                                    <span class="sidenav-normal"> Provincias <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ (request()->is('distritos')) ? 'active' : '' }}" href="{{ route('distritos.index')}}">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Distritos <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ (request()->is('zonas')) ? 'active' : '' }}" href="{{ route('zonas.index')}}">
+                                    <span class="sidenav-mini-icon"> Z </span>
+                                    <span class="sidenav-normal"> Zonas <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            {{--<li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal"> Candidatos <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> E </span>
+                                    <span class="sidenav-normal"> Encuestas <b class="caret"></b></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <span class="sidenav-mini-icon"> R </span>
+                                    <span class="sidenav-normal"> Reportes <b class="caret"></b></span>
+                                </a>
+                            </li>--}}
+                        </ul>
+                    </div>
+                </li>
+                {{--<li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#elecciones" class="nav-link {{ (request()->is('departamentos')) || (request()->is('provincias')) || (request()->is('distritos')) || (request()->is('zonas')) ? 'active' : '' }}" aria-controls="elecciones" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
+                        </div>
                         <span class="nav-link-text ms-1">Encuestas</span>
                     </a>
                     <div class="collapse " id="elecciones">
@@ -147,21 +201,9 @@
                                     <span class="sidenav-normal"> Reportes <b class="caret"></b></span>
                                 </a>
                             </li>
-                            {{--<li class="nav-item ">
-                                <a class="nav-link {{ (request()->is('servicios')) ? 'active' : '' }}" href="{{ route('servicios.index')}}">
-                                    <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Servicios <b class="caret"></b></span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link {{ (request()->is('testimonios')) ? 'active' : '' }}" href="{{ route('testimonios.index')}}">
-                                    <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Testimonios <b class="caret"></b></span>
-                                </a>
-                            </li>--}}
                         </ul>
                     </div>
-                </li>
+                </li>--}}
                 @else
 
                 @endif

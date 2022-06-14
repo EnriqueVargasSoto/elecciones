@@ -110,16 +110,19 @@ Route::get('subpublicaciones/{id}/{idPublicacion}', [WebController::class, 'subp
 
 //elecciones
 Route::get('departamentos', [DepartamentosController::class, 'index'])->name('departamentos.index');
-Route::post('departamentos-store', [DepartamentosController::class, 'import'])->name('departamentos.import');
+Route::post('departamentos-store', [DepartamentosController::class, 'store'])->name('departamentos.store');
+Route::post('departamentos-import', [DepartamentosController::class, 'import'])->name('departamentos.import');
 route::get('departamento-cambia-estado/{id}', [DepartamentosController::class, 'destroy'])->name('departamentos.delete');
 
 Route::get('provincias', [ProvinciasController::class, 'index'])->name('provincias.index');
-Route::post('provincias-store', [ProvinciasController::class, 'import'])->name('provincias.import');
+Route::post('provincias-store', [ProvinciasController::class, 'store'])->name('provincias.store');
+Route::post('provincias-import', [ProvinciasController::class, 'import'])->name('provincias.import');
 route::get('provincias-cambia-estado/{id}', [ProvinciasController::class, 'destroy'])->name('provincias.delete');
 route::get('getProvincias/{id}', [ProvinciasController::class, 'getProvincias']);
 
 Route::get('distritos', [DistritosController::class, 'index'])->name('distritos.index');
-Route::post('distritos-store', [DistritosController::class, 'import'])->name('distritos.import');
+Route::post('distritos-store', [DistritosController::class, 'store'])->name('distritos.store');
+Route::post('distritos-import', [DistritosController::class, 'import'])->name('distritos.import');
 route::get('distritos-cambia-estado/{id}', [DistritosController::class, 'destroy'])->name('distritos.delete');
 route::get('getDistritos/{id}', [DistritosController::class, 'getDistritos']);
 

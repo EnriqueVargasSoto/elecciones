@@ -39,7 +39,11 @@ class DepartamentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Departamento::create([
+            'departamento' => $request->departamento,
+            'estado' => 'activo'
+        ]);
+        return back();
     }
 
     /**

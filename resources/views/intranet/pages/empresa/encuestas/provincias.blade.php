@@ -9,10 +9,10 @@
             <div class="row">
               <div class="col-6"><h5 class="mb-0">Provincias</h5></div>
               <div class="col-6" style="text-align: right">
-                <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Importar Provincias</button>
+                {{--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Importar Provincias</button>--}}
                 {{--<a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Provincias</a>
                 <a href="#" class="btn btn-info">Exportar</a>--}}
-                <!--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>-->
+                <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
               </div>
             </div>
             
@@ -103,6 +103,46 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Nueva Provincias</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('provincias.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                      <label for="">Departamento</label>
+                      <select name="idDepartamento" id="idDepartamento" class="form-control">
+                          @foreach ($departamentos as $departamento)
+                          <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                          @endforeach
+                      </select>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <label for="">Provincia</label>
+                  <input type="text" name="provincia" placeholder="Provincia" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn bg-gradient-primary">Crear</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Crear-->
+  {{--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Importar Provincias</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -111,16 +151,6 @@
         <form action="{{ route('provincias.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
-                {{--<div class="row">
-                    <div class="col-12">
-                        <label for="">Departamento</label>
-                        <select name="tipo" id="" class="form-control">
-                            @foreach ($departamentos as $departamento)
-                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                  </div><br>--}}
               <div class="row">
                 <div class="col-12">
                   <input type="file" name="provincias" placeholder="Importar Provincias" class="form-control">
@@ -134,7 +164,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div>--}}
 @endsection
 
 @section('script')

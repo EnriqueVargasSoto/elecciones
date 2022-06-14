@@ -43,7 +43,14 @@ class DistritosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Distrito::create([
+            'idDepartamento' => $request->idDepartamento,
+            'idProvincia' => $request->idProvincia,
+            'distrito' => $request->distrito,
+            'estado' => 'activo'
+        ]);
+
+        return back();
     }
 
     /**

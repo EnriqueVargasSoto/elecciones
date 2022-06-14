@@ -42,7 +42,13 @@ class ProvinciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Provincia::create([
+            'idDepartamento' => $request->idDepartamento,
+            'provincia' => $request->provincia,
+            'estado' => 'activo'
+        ]);
+
+        return back();
     }
 
     /**
