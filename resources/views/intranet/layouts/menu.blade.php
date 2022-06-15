@@ -151,7 +151,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#partidos" class="nav-link {{ (request()->is('departamentos')) || (request()->is('provincias')) || (request()->is('distritos')) || (request()->is('zonas')) ? 'active' : '' }}" aria-controls="partidos" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#partidos" class="nav-link {{ (request()->is('partidos')) || (request()->is('provincias'))  ? 'active' : '' }}" aria-controls="partidos" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                             <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                         </div>
@@ -160,7 +160,7 @@
                     <div class="collapse " id="partidos">
                         <ul class="nav ms-4">
                             <li class="nav-item ">
-                                <a class="nav-link  {{ (request()->is('departamentos')) ? 'active' : '' }}" href="{{ route('departamentos.index')}}">
+                                <a class="nav-link  {{ (request()->is('partidos')) ? 'active' : '' }}" href="{{ route('partidos.index')}}">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Partidos <b class="caret"></b></span>
                                 </a>

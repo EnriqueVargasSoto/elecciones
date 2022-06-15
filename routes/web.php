@@ -19,6 +19,7 @@ use App\Http\Controllers\Empresa\SubpublicacionController;
 use App\Http\Controllers\Empresa\DepartamentosController;
 use App\Http\Controllers\Empresa\ProvinciasController;
 use App\Http\Controllers\Empresa\DistritosController;
+use App\Http\Controllers\Empresa\PartidosController;
 use App\Http\Controllers\Empresa\ZonasController;
 
 /*
@@ -129,3 +130,8 @@ route::get('getDistritos/{id}', [DistritosController::class, 'getDistritos']);
 Route::get('zonas', [ZonasController::class, 'index'])->name('zonas.index');
 Route::post('zonas-store', [ZonasController::class, 'store'])->name('zonas.store');
 Route::get('zona-cambia-estado/{id}', [ZonasController::class, 'destroy'])->name('zonas.delete');
+
+Route::get('partidos', [PartidosController::class, 'index'])->name('partidos.index');
+Route::post('partifos-store', [PartidosController::class, 'store'])->name('partidos.store');
+Route::put('partidos-update/{id}', [PartidosController::class, 'update'])->name('partidos.update');
+Route::get('partidos-cambia-estado/{id}', [PartidosController::class, 'destroy'])->name('partidos.delete');

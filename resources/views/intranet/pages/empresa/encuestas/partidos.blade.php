@@ -34,16 +34,26 @@
                 </tr>
               </thead>
               <tbody>
-                {{--@foreach ($departamentos as $key => $departamento)
+                @foreach ($partidos as $key => $partido)
                     <tr>
-                      <td class="text-sm font-weight-normal">
-                        <a href="{{ route('sliders.edit', $departamento->id)}}" class="btn btn-success"> Editar </a>
-                        <a href="{{ route('departamentos.delete', $departamento->id)}}" class="btn btn-danger"> Eliminar </a>
-                      </td>
-                      <td class="text-sm font-weight-normal">{{$departamento->id}}</td>
-                      <td class="text-sm font-weight-normal">{{$departamento->departamento}}</td>
+                        <td class="text-sm font-weight-normal">
+                            <a href="{{ route('partidos.delete', $partido->id)}}" class="btn btn-danger"> Eliminar </a>
+                            <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
+                            
+                            
+                        </td>
+                        <td class="text-sm font-weight-normal">{{$partido->id}}</td>
+                        <td class="text-sm font-weight-normal">{{$partido->partido}}</td>
+                        <td class="text-sm font-weight-normal">
+                            <?php $dep = App\Models\Departamento::find($partido->idDepartamento); ?>
+                            {{$dep->departamento}}
+                        </td>
+                        <td class="text-sm font-weight-normal">
+                            <img src="{{ asset('img/logotipos/'.$partido->logotipo)}}" alt="" style="width:auto; height: 65px;;">
+                        </td>
+                        <td class="text-sm font-weight-normal">{{$partido->observacion}}</td>
                     </tr>
-                @endforeach--}}
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -63,58 +73,51 @@
         </div>
       </div>
     </div>
-    <!--<footer class="footer pt-3  ">
-      <div class="container-fluid">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6 mb-lg-0 mb-4">
-            <div class="copyright text-center text-sm text-muted text-lg-start">
-              © <script>
-                document.write(new Date().getFullYear())
-              </script>,
-              made with <i class="fa fa-heart"></i> by
-              <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
-              for a better web.
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/" class="nav-link text-muted" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>-->
   </div>
   <!-- Modal Crear-->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Departamento</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Partido</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('departamentos.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('partidos.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
-              <div class="row">
-                <div class="col-12">
-                  <label for="">Departamento</label>
-                  <input type="text" name="departamento" placeholder="Departamento" class="form-control">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Partido</label>
+                        <input type="text" name="partido" placeholder="Partido" class="form-control">
+                    </div>
                 </div>
-              </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Región</label>
+                        <select name="idDepartamento" id="idDepartamento" class="form-control">
+                            @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Logotipo</label>
+                        <input type="file" name="logotipo"  class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Observación</label>
+                        <textarea type="text" name="observacion" placeholder="observacion" class="form-control"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -124,6 +127,64 @@
       </div>
     </div>
   </div>
+
+  @foreach ($partidos as $key => $partido)
+  <div class="modal fade" id="exampleModalEdit{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Partido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('partidos.update', $partido->id)}}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Partido</label>
+                        <input type="text" name="partido" placeholder="Partido" class="form-control" value="{{$partido->partido}}">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Región</label>
+                        <select name="idDepartamento" id="idDepartamento" class="form-control">
+                            <?php $depa = App\Models\Departamento::find($partido->idDepartamento); ?>
+                            <option value="{{$depa->id}}">{{$depa->departamento}}</option>
+                            @foreach ($departamentos as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Logotipo</label>
+                        <input type="file" name="logotipo"  class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Observación</label>
+                        <textarea type="text" name="observacion" placeholder="observacion" class="form-control">{{$partido->observacion}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn bg-gradient-primary">Actualizar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endforeach
 
   {{--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

@@ -15,6 +15,7 @@ class Partido extends Model
         'partido',
         'idDepartamento',
         'logotipo',
+        'estado',
         'observacion'
     ];
 }
