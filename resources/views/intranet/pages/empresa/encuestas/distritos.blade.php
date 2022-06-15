@@ -36,7 +36,7 @@
                 @foreach ($distritos as $key => $distrito)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('sliders.delete', $distrito->id)}}" class="btn btn-danger"> Eliminar </a>
+                        <a href="{{ route('distritos.delete', $distrito->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
                       <td class="text-sm font-weight-normal">{{$distrito->id}}</td>
                       <td class="text-sm font-weight-normal">

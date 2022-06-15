@@ -10,6 +10,8 @@ use App\Models\Departamento;
 use App\Models\Provincia;
 use App\Models\Distrito;
 
+use function Symfony\Component\String\b;
+
 class DistritosController extends Controller
 {
     /**
@@ -102,6 +104,8 @@ class DistritosController extends Controller
         } else {
             $distrito->estado = 'activo';
         }
+        $distrito->save();
+        return back();
         
     }
 
