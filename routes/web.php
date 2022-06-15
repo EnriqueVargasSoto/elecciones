@@ -15,6 +15,7 @@ use App\Http\Controllers\Empresa\ServicioController;
 use App\Http\Controllers\Empresa\PublicacionController;
 use App\Http\Controllers\Empresa\SubImagenController;
 use App\Http\Controllers\Empresa\SubpublicacionController;
+use App\Http\Controllers\Empresa\CandidatosController;
 
 use App\Http\Controllers\Empresa\DepartamentosController;
 use App\Http\Controllers\Empresa\ProvinciasController;
@@ -135,3 +136,6 @@ Route::get('partidos', [PartidosController::class, 'index'])->name('partidos.ind
 Route::post('partifos-store', [PartidosController::class, 'store'])->name('partidos.store');
 Route::put('partidos-update/{id}', [PartidosController::class, 'update'])->name('partidos.update');
 Route::get('partidos-cambia-estado/{id}', [PartidosController::class, 'destroy'])->name('partidos.delete');
+
+// ! candidatos index
+Route::get('candidatos', [CandidatosController::class, 'index'])->name('candidatos.index');

@@ -2,11 +2,11 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ route('usuarios.admin')}}" target="_blank">
-            
+
                 <img src="{{ asset('web/images/logo.png')}}" class="navbar-brand-img h-100" alt="main_logo" style="margin-bottom: 30px;">
             <br>
             <span class="ms-1 font-weight-bold" style="margin-top: 30px;">
-                <?php $perfil = App\Models\Perfil::find(auth()->user()->idPerfil); 
+                <?php $perfil = App\Models\Perfil::find(auth()->user()->idPerfil);
                 echo('hola, '.$perfil->nombres);
                 ?>
             </span>
@@ -40,7 +40,7 @@
                     <span class="nav-link-text ms-1">Roles Empresas</span>
                 </a>
             </li>
-            @else 
+            @else
                 @if ($perfil->tipo  == 'empresa')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#web" class="nav-link {{ (request()->is('datos-empresa')) || (request()->is('redes-sociales')) || (request()->is('sliders')) ? 'active' : '' }}" aria-controls="web" role="button" aria-expanded="false">
@@ -166,7 +166,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ (request()->is('provincias')) ? 'active' : '' }}" href="{{ route('provincias.index')}}">
+                                <a class="nav-link {{ (request()->is('provincias')) ? 'active' : '' }}" href="{{ route('candidatos.index')}}">
                                     <span class="sidenav-mini-icon"> c </span>
                                     <span class="sidenav-normal"> Candidatos <b class="caret"></b></span>
                                 </a>
