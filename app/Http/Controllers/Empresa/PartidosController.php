@@ -39,6 +39,7 @@ class PartidosController extends Controller
      */
     public function store(Request $request)
     {
+        
         if($request->hasFile("logotipo")){
 
             $imagen = $request->file("logotipo");
@@ -51,11 +52,11 @@ class PartidosController extends Controller
             //$post->imagen = $nombreimagen;            
             
         }
-        
+        dd($request);
         Partido::create([
             'partido' => $request->partido,
             'idDepartamento' => $request->idDepartamento,
-            'logotipo' => $nombreimagenLogotipo,//'',
+            'logotipo' => $nombreimagenLogotipo,
             'estado' => 'activo',
             'observacion' => $request->observacion
         ]);
