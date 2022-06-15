@@ -52,13 +52,13 @@ class PartidosController extends Controller
             //$post->imagen = $nombreimagen;            
             
         }
-        dd($request);
+        //dd($request);
         Partido::create([
             'partido' => $request->partido,
             'idDepartamento' => $request->idDepartamento,
             'logotipo' => $nombreimagenLogotipo,
+            'observacion' => $request->observacion,
             'estado' => 'activo',
-            'observacion' => $request->observacion
         ]);
         return back();
     }
