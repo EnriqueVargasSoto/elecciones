@@ -53,13 +53,20 @@ class PartidosController extends Controller
             
         }
         //dd($request);
-        Partido::create([
+        $partido = new Partido();
+        $partido->partido = $request->partido;
+        $partido->idDepartamento = $request->idDepartamento;
+        $partido->logotipo = $nombreimagenLogotipo;
+        $partido->estado = 'activo';
+        $partido->observacion = $request->observacion;
+        $partido->save();
+        /*Partido::create([
             'partido' => $request->partido,
             'idDepartamento' => $request->idDepartamento,
             'logotipo' => $nombreimagenLogotipo,
             'observacion' => $request->observacion,
             'estado' => 'activo',
-        ]);
+        ]);*/
         return back();
     }
 
