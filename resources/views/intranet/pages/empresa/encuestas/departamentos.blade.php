@@ -39,7 +39,7 @@
                         {{--<a href="{{ route('sliders.edit', $departamento->id)}}" class="btn btn-success"> Editar </a>--}}
                         <a href="{{ route('departamentos.delete', $departamento->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
-                      <td class="text-sm font-weight-normal">{{$provincia->id}}</td>
+                      <td class="text-sm font-weight-normal">{{$departamento->id}}</td>
                       <td class="text-sm font-weight-normal">{{$departamento->departamento}}</td>
                       {{--<td class="text-sm font-weight-normal">{{$slider->orden}}</td>
                       <td class="text-sm font-weight-normal">{{$slider->url}}</td>--}}

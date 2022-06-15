@@ -38,7 +38,7 @@
                       <td class="text-sm font-weight-normal">
                         <a href="{{ route('sliders.delete', $distrito->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
-                      <td class="text-sm font-weight-normal">{{$provincia->id}}</td>
+                      <td class="text-sm font-weight-normal">{{$distrito->id}}</td>
                       <td class="text-sm font-weight-normal">
                         <?php $dep = App\Models\Departamento::find($distrito->idDepartamento); ?>
                         {{$dep->departamento}}
