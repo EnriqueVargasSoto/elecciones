@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Empresa;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Distrito;
-use App\Models\Provincia;
 use Illuminate\Http\Request;
-use App\Models\Zona;
 
-class ZonasController extends Controller
+class PartidosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +14,7 @@ class ZonasController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::where('estado','activo')->get();
-        $provincias = Provincia::where('estado', 'activo')->get();
-        $distritos = Distrito::where('estado', 'activo')->get();
-        $zonas = Zona::where('estado','activo')->get();
-        return view('intranet.pages.empresa.encuestas.zonas')->with(compact('departamentos', 'provincias', 'distritos', 'zonas'));
+        //
     }
 
     /**
@@ -43,14 +35,7 @@ class ZonasController extends Controller
      */
     public function store(Request $request)
     {
-        Zona::create([
-            'idDepartamento' => $request->idDepartamento,
-            'idProvincia' => $request->idProvincia,
-            'idDistrito' => $request->idDistrito,
-            'zona' => $request->zona,
-            'estado' => 'activo',
-        ]);
-        return back();
+        //
     }
 
     /**
@@ -95,14 +80,6 @@ class ZonasController extends Controller
      */
     public function destroy($id)
     {
-        $zona = Zona::find($id);
-        if ($zona->estado == 'activo') {
-            $zona->estado = 'inactivo';
-        } else {
-            $zona->estado = 'activo';
-        }
-        $zona->save();
-        return back();
-        
+        //
     }
 }
