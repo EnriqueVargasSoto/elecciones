@@ -34,18 +34,30 @@
                 </tr>
               </thead>
               <tbody>
-                {{--@foreach ($sliders as $key => $slider)
+                @foreach ($zonas as $key => $zona)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('sliders.edit', $slider->id)}}" class="btn btn-success"> Editar </a>
-                        <a href="{{ route('sliders.delete', $slider->id)}}" class="btn btn-danger"> Eliminar </a>
+                        {{--<a href="{{ route('sliders.edit', $slider->id)}}" class="btn btn-success"> Editar </a>--}}
+                        <a href="{{ route('zonas.delete', $zona->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
-                      <td class="text-sm font-weight-normal">{{$key+1}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->nombre}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->orden}}</td>
-                      <td class="text-sm font-weight-normal">{{$slider->url}}</td>
+                      <td class="text-sm font-weight-normal">{{$zona->id}}</td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $depa = App\Models\Departamento::find($zona->idDepartamento); ?>
+                        {{$depa->departamento}}
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $prov = App\Models\Provincia::find($zona->idProvincia); ?>
+                        {{$prov->provincia}}
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $dist = App\Models\Distrito::find($zona->idDistrito); ?>
+                        {{$dist->distrito}}
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        {{$zona->zona}}
+                      </td>
                     </tr>
-                @endforeach--}}
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -109,13 +121,14 @@
               <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('distritos.import')}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('zonas.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12">
                         <label for="">Departamento</label>
-                        <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias()">
+                        <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias(idDepartamento)">
+                          <option value=""></option>
                             @foreach ($departamentos as $departamento)
                             <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
                             @endforeach
@@ -126,9 +139,7 @@
                     <div class="col-12">
                         <label for="">Provincia</label>
                         <select name="idProvincia" id="idProvincia" class="form-control" onchange="getDistritos()">
-                            @foreach ($provincias as $provincia)
-                            
-                            @endforeach
+                          <option value=""></option>
                         </select>
                     </div>
                   </div><br>
@@ -199,15 +210,17 @@
               fila += '<option value="'+res[i].id+'">'+res[i].provincia+'</option>';
               
             }
+            console.log(fila);
             $("#idProvincia option").remove();
             $("#idProvincia").append(fila);
+            getDistritos(res[0].id);
               //console.log(res[0]);
               //alert(res);
           }
         })
       }
 
-      function getDistritos(){
+      function getDistritos(id){
         let idProvincia = $('#idProvincia').val();
         let ip = window.location.origin;
         console.log('la ip es : '+ip);

@@ -38,7 +38,7 @@
                       <td class="text-sm font-weight-normal">
                         <a href="{{ route('sliders.delete', $distrito->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
-                      <td class="text-sm font-weight-normal">{{$key+1}}</td>
+                      <td class="text-sm font-weight-normal">{{$provincia->id}}</td>
                       <td class="text-sm font-weight-normal">
                         <?php $dep = App\Models\Departamento::find($distrito->idDepartamento); ?>
                         {{$dep->departamento}}
@@ -119,6 +119,7 @@
                     <div class="col-12">
                         <label for="">Departamento</label>
                         <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias()">
+                          <option value=""></option>
                             @foreach ($departamentos as $departamento)
                             <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
                             @endforeach
@@ -129,7 +130,7 @@
               <div class="row">
                 <div class="col-12">
                     <label for="">Provincia</label>
-                    <select name="idProvincia" id="idProvincia" class="form-control">
+                    <select name="idProvincia" id="idProvincia" class="form-control" placeholder="Provincia">
                         
                     </select>
                 </div>

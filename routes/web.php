@@ -127,3 +127,5 @@ route::get('distritos-cambia-estado/{id}', [DistritosController::class, 'destroy
 route::get('getDistritos/{id}', [DistritosController::class, 'getDistritos']);
 
 Route::get('zonas', [ZonasController::class, 'index'])->name('zonas.index');
+Route::post('zonas-store', [ZonasController::class, 'store'])->name('zonas.store');
+Route::get('zona-cambia-estado/{id}', [ZonasController::class, 'destroy'])->name('zonas.delete');

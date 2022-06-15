@@ -43,7 +43,14 @@ class ZonasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Zona::create([
+            'idDepartamento' => $request->idDepartamento,
+            'idProvincia' => $request->idProvincia,
+            'idDistrito' => $request->idDistrito,
+            'zona' => $request->zona,
+            'estado' => 'activo',
+        ]);
+        return back();
     }
 
     /**
@@ -88,6 +95,14 @@ class ZonasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $zona = Zona::find($id);
+        if ($zona->estado == 'activo') {
+            $zona->estado = 'inactivo';
+        } else {
+            $zona->estado = 'activo';
+        }
+
+        return back();
+        
     }
 }

@@ -13,7 +13,7 @@ class Zona extends Model
     protected $fillable = [
         'idDepartamento',
         'idProvincia',
-        'idDepartamento',
+        'idDistrito',
         'zona',
         'estado'
     ];

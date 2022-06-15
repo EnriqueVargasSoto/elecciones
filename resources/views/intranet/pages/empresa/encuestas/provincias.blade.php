@@ -38,7 +38,7 @@
                       <td class="text-sm font-weight-normal">
                         <a href="{{ route('provincias.delete', $provincia->id)}}" class="btn btn-danger"> Eliminar </a>
                       </td>
-                      <td class="text-sm font-weight-normal">{{$key+1}}</td>
+                      <td class="text-sm font-weight-normal">{{$provincia->id}}</td>
                       <td class="text-sm font-weight-normal">
                         <?php $dep = App\Models\Departamento::find($provincia->idDepartamento); ?>
                         {{$dep->departamento}}
