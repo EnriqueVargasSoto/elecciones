@@ -18,9 +18,9 @@ class ZonasController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::where('estado','activo')->get();
-        $provincias = Provincia::where('estado', 'activo')->get();
-        $distritos = Distrito::where('estado', 'activo')->get();
+        $departamentos = Departamento::where('estado','activo')->orderBy('departamento', 'ASC')->get();
+        $provincias = Provincia::where('estado', 'activo')->orderBy('provincia', 'ASC')->get();
+        $distritos = Distrito::where('estado', 'activo')->orderBy('distrito', 'ASC')->get();
         $zonas = Zona::where('estado','activo')->get();
         return view('intranet.pages.empresa.encuestas.zonas')->with(compact('departamentos', 'provincias', 'distritos', 'zonas'));
     }

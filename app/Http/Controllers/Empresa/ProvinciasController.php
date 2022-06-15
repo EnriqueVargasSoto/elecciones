@@ -19,7 +19,7 @@ class ProvinciasController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::where('estado', 'activo')->get();
+        $departamentos = Departamento::where('estado', 'activo')->orderBy('departamento', 'ASC')->get();
         $provincias = Provincia::where('estado','activo')->get();
         return view('intranet.pages.empresa.encuestas.provincias')->with(compact('departamentos','provincias'));
     }

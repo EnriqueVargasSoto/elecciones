@@ -21,8 +21,8 @@ class DistritosController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::where('estado', 'activo')->get();
-        $provincias = Provincia::where('estado','activo')->get();
+        $departamentos = Departamento::where('estado', 'activo')->orderBy('departamento', 'ASC')->get();
+        $provincias = Provincia::where('estado','activo')->orderBy('provincia', 'ASC')->get();
         $distritos = Distrito::where('estado','activo')->get();
         return view('intranet.pages.empresa.encuestas.distritos')->with(compact('departamentos','provincias', 'distritos'));
     }
