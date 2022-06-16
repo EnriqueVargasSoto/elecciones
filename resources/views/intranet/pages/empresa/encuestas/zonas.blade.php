@@ -124,7 +124,7 @@
         <form action="{{ route('zonas.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
-                <div class="row">
+                  <div class="row">
                     <div class="col-12">
                         <label for="">Departamento</label>
                         <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias(idDepartamento)">

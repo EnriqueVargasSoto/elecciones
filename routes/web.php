@@ -139,3 +139,4 @@ Route::get('partidos-cambia-estado/{id}', [PartidosController::class, 'destroy']
 
 // ! candidatos index
 Route::get('candidatos', [CandidatosController::class, 'index'])->name('candidatos.index');
+route::post('candidatos-store', [CandidatosController::class, 'store'])->name('candidatos.store');

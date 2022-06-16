@@ -11,15 +11,16 @@ class candidato extends Model
     protected $table = 'candidatos';
     protected $fillable = [
         'id',
-        'nombre_corto',
         'tipo',
-        'departamento_id',
-        'provincia_id',
-        'distrito_id',
-        'partido',
-        'nombre_apellido',
+        'idDepartamento',
+        'idProvincia',
+        'idDistrito',
+        'nombreCorto',
+        'idPartido',
+        'nombresApellidos',
         'foto',
-        'observador',
-        'estado'
+        'estado',
+        'visualiza',
+        'observaciones'
     ];
 }

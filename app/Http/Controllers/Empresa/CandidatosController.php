@@ -8,6 +8,7 @@ use App\Models\Departamento;
 use App\Models\Provincia;
 use App\Models\Distrito;
 use App\Models\Candidato;
+use App\Models\Partido;
 
 class CandidatosController extends Controller
 {
@@ -23,7 +24,8 @@ class CandidatosController extends Controller
         $departamentos = Departamento::where('estado', 'activo')->orderBy('departamento', 'ASC')->get();
         $provincias = Provincia::where('estado','activo')->orderBy('provincia', 'ASC')->get();
         $distritos = Distrito::where('estado','activo')->get();
-        return view('intranet.pages.empresa.encuestas.candidatos')->with(compact('departamentos','provincias', 'distritos', 'candidatos'));
+        $partidos = Partido::where('estado', 'Activo')->orderBy('partido', 'ASC')->get();
+        return view('intranet.pages.empresa.encuestas.candidatos')->with(compact('departamentos','provincias', 'distritos', 'candidatos', 'partidos'));
     }
 
     /**
@@ -44,21 +46,67 @@ class CandidatosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        Provincia::create([
-            'nombre_corto' => $request->nombre_corto,
-            'tipo' => $request->tipo,
-            'departamento_id' => $request->departamento_id,
-            'provincia_id' => $request->provincia_id,
-            'distrito_id' => $request->distrito_id,
-            'partido' => $request->partido,
-            'nombre_apellido' => $request->nombre_apellido,
-            'foto' => $request->foto,
-            'observador' => $request->observador,
-        ]);
+        if($request->hasFile("foto")){
 
+            $imagen = $request->file("foto");
+            $nombreimagenFoto = $imagen->getClientOriginalName().".".$imagen->guessExtension();
+            $ruta = public_path("img/fotos/");
+            
+            $imagen->move($ruta,$nombreimagenFoto);
+            //copy($imagen->getRealPath(),$ruta.$nombreimagen);
 
+            //$post->imagen = $nombreimagen;            
+            
+        }
 
+        if ($request->tipo === 'Regional') {
+            Candidato::create([
+                'tipo' => $request->tipo,
+                'idDepartamento' => $request->idDepartamento,
+                //'idProvincia' => $request->idProvincia,
+                //'idDistrito' => $request->idDistrito,
+                'nombreCorto' => $request->nombreCorto,
+                'idPartido' => $request->idPartido,
+                'nombresApellidos' => $request->nombresApellidos,
+                'foto' => $nombreimagenFoto,
+                'estado' => 'activo',
+                'visualiza' => 'Si',
+                'observaciones' => $request->observacion
+            ]);
+        } else {
+            if ($request->tipo === 'Provincial') {
+                Candidato::create([
+                    'tipo' => $request->tipo,
+                    'idDepartamento' => $request->idDepartamento,
+                    'idProvincia' => $request->idProvincia,
+                    //'idDistrito' => $request->idDistrito,
+                    'nombreCorto' => $request->nombreCorto,
+                    'idPartido' => $request->idPartido,
+                    'nombresApellidos' => $request->nombresApellidos,
+                    'foto' => $nombreimagenFoto,
+                    'estado' => 'activo',
+                    'visualiza' => 'Si',
+                    'observaciones' => $request->observacion
+                ]);
+            } else {
+                Candidato::create([
+                    'tipo' => $request->tipo,
+                    'idDepartamento' => $request->idDepartamento,
+                    'idProvincia' => $request->idProvincia,
+                    'idDistrito' => $request->idDistrito,
+                    'nombreCorto' => $request->nombreCorto,
+                    'idPartido' => $request->idPartido,
+                    'nombresApellidos' => $request->nombresApellidos,
+                    'foto' => $nombreimagenFoto,
+                    'estado' => 'activo',
+                    'visualiza' => 'Si',
+                    'observaciones' => $request->observacion
+                ]);
+            }
+            
+        }
+        
+        return back();
     }
 
     /**
