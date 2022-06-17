@@ -63,7 +63,7 @@
                       </td>
                       <td class="text-sm font-weight-normal">
                         @if ($candidato->tipo == 'Distrital')
-                        <?php $dist = App\Models\Distrital::find($candidato->idDistrito); ?>
+                        <?php $dist = App\Models\Distrito::find($candidato->idDistrito); ?>
                         {{$dist->distrito}}
                         @else 
                           ---
