@@ -44,7 +44,7 @@
                         {{--<a href="{{ route('provincias.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>--}}
                       </td>
                       <td class="text-sm font-weight-normal">
-                        {{--<a href="{{ route('provincias.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>--}}
+                        <a href="#" class="btn btn-info"> {{$candidato->visualiza}} </a>
                       </td>
                       <td class="text-sm font-weight-normal">{{$candidato->id}}</td>
                       <td class="text-sm font-weight-normal">{{$candidato->nombreCorto}}</td>
