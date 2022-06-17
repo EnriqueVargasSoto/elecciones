@@ -78,7 +78,7 @@
                         <img src="{{ asset ('img/fotos/'.$candidato->foto)}}" alt="">
                       </td>
                       <td class="text-sm font-weight-normal">{{$candidato->observaciones}}</td>
-                    </td>
+                    
                     </tr>
                 @endforeach
               </tbody>
