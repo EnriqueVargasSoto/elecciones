@@ -143,14 +143,29 @@ class CandidatosController extends Controller
         //
         $candidato = Candidato::find($id);
 
-        $candidato->nombre_corto = $request->nombre_corto;
+        if($request->hasFile("foto")){
+
+            $imagen = $request->file("foto");
+            $nombreimagenFoto = $imagen->getClientOriginalName().".".$imagen->guessExtension();
+            $ruta = public_path("img/fotos/");
+            
+            $imagen->move($ruta,$nombreimagenLogotipo);
+            //copy($imagen->getRealPath(),$ruta.$nombreimagen);
+
+            //$post->imagen = $nombreimagen;            
+            
+        }else{
+            $nombreimagenFoto = $candidato->foto;
+        }
+        
+        $candidato->nombreCorto = $request->nombreCorto;
         $candidato->tipo = $request->tipo;
         $candidato->departamento_id = $request->departamento_id;
         $candidato->provincia_id = $request->provincia_id;
         $candidato->distrito_id = $request->distrito_id;
         $candidato->partido = $request->partido;
         $candidato->nombre_apellido = $request->nombre_apellido;
-        $candidato->foto = $request->foto;
+        $candidato->foto = $nombreimagenFoto;//$request->foto;
         $candidato->observador = $request->observador;
         $candidato->save();
     }
@@ -163,6 +178,13 @@ class CandidatosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $candidato = Candidato::find($id);
+        if ($candidato->estado == 'activo') {
+            $candidato->estado = 'inactivo';
+        } else {
+            $candidato->estado = 'activo';
+        }
+        $candidato->save();
+        return back();
     }
 }
