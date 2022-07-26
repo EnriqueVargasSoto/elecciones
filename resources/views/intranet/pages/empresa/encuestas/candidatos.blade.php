@@ -46,6 +46,10 @@
                        
                         
                       </td>
+                      <td class="text-sm font-weight-normal">
+                       
+                        <a href="">{{$candidato->id}}</a>
+                      </td>
                       
                     
                     </tr>
