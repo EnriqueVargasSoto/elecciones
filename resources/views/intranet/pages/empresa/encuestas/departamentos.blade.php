@@ -9,7 +9,7 @@
             <div class="row">
               <div class="col-6"><h5 class="mb-0">Departamentos</h5></div>
               <div class="col-6" style="text-align: right">
-                {{--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Importar Departamentos</button>--}}
+                {{--<button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalImport">Importar Departamentos</button>--}}
                 {{--<a href="{{ route('sliders.craete')}}" class="btn btn-success">Importar Departamentos</a>
                 <a href="#" class="btn btn-info">Exportar</a>--}}
                 <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo</button>
@@ -126,7 +126,7 @@
     </div>
   </div>
 
-  {{--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModalImport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -151,7 +151,7 @@
         </form>
       </div>
     </div>
-  </div>--}}
+  </div>
 @endsection
 
 @section('script')
