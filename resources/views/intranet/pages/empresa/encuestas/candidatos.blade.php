@@ -41,7 +41,7 @@
                 @foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('candidatos.delete', $candidato->id)}}">{{$candidato->id}}</a>
+                        {{$candidato}}
                         
                       </td>
                       <td class="text-sm font-weight-normal">
