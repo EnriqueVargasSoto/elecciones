@@ -41,7 +41,9 @@
                 @foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        {{$candidato}}
+                        <a href="{{ route('candidatos.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>
+                            <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
+                        
                       </td>
                       
                     
