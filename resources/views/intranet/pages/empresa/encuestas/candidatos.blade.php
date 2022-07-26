@@ -43,7 +43,7 @@
                       <td class="text-sm font-weight-normal">
                         {{$candidato}} <br>
                         {{$candidato->id}}
-                        <a href="{{ route('candidatos.delete', 1)}}" class="btn btn-danger"> Eliminar </a>
+                       
                         
                       </td>
                       
