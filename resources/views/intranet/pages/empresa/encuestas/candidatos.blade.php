@@ -41,7 +41,7 @@
                 @foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        
+                        {{$candidato}}
                       </td>
                       
                     
