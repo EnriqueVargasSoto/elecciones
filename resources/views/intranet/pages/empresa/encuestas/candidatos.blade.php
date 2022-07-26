@@ -41,7 +41,9 @@
                 @foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('candidatos.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>
+                        {{$candidato}} <br>
+                        {{$candidato->id}}
+                        <a href="#" class="btn btn-danger"> Eliminar </a>
                         
                       </td>
                       
