@@ -45,12 +45,6 @@
                             <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
                         
                       </td>
-                      <td class="text-sm font-weight-normal">
-                        <a href="#" class="btn btn-info"> {{$candidato->visualiza}} </a>
-                      </td>
-                      <td class="text-sm font-weight-normal">{{$candidato->id}}</td>
-                      <td class="text-sm font-weight-normal">{{$candidato->nombreCorto}}</td>
-                      <td class="text-sm font-weight-normal">{{$candidato->tipo}}</td>
                       
                     
                     </tr>
