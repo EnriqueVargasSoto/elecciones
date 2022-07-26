@@ -38,12 +38,12 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($candidatos as $key => $candidato)
+                {{--@foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
                         <a href="{{ route('candidatos.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>
                             <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
-                        {{--<a href="{{ route('provincias.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>--}}
+                        {
                       </td>
                       <td class="text-sm font-weight-normal">
                         <a href="#" class="btn btn-info"> {{$candidato->visualiza}} </a>
@@ -82,7 +82,7 @@
                       <td class="text-sm font-weight-normal">{{$candidato->observaciones}}</td>
                     
                     </tr>
-                @endforeach
+                @endforeach--}}
               </tbody>
             </table>
           </div>
@@ -105,7 +105,7 @@
     
   </div>
   <!-- Modal Crear-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -200,9 +200,9 @@
         </form>
       </div>
     </div>
-  </div>
+  </div>--}}
 
-  @foreach ($candidatos as $key => $candidato)
+  {{--@foreach ($candidatos as $key => $candidato)
       <!-- Modal Crear-->
   <div class="modal fade" id="exampleModalEdit{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -303,7 +303,7 @@
       </div>
     </div>
   </div>
-  @endforeach
+  @endforeach--}}
 @endsection
 
 @section('script')
