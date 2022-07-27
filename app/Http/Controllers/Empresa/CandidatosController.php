@@ -188,4 +188,5 @@ class CandidatosController extends Controller
         $candidato->save();*/
         //return back();
     }
+
 }
