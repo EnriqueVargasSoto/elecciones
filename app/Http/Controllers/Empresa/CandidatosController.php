@@ -178,15 +178,14 @@ class CandidatosController extends Controller
      */
     public function destroy($id)
     {
-        dd('hola mundo');
-        /*$candidato = Candidato::find($id);
+        $candidato = Candidato::find($id);
         if ($candidato->estado == 'activo') {
             $candidato->estado = 'inactivo';
         } else {
             $candidato->estado = 'activo';
         }
-        $candidato->save();*/
-        //return back();
+        $candidato->save();
+        return back();
     }
 
 }

@@ -42,9 +42,43 @@
                     <tr>
                       <td class="text-sm font-weight-normal">
                         <a href="{{ route('elimina-candidatos', $item->id)}}" class="btn btn-danger"> Eliminar </a>
-                        
+                        <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
                       </td>
-                    
+                      <td class="text-sm font-weight-normal">
+                        <a href="#" class="btn btn-info"> {{$candidato->visualiza}} </a>
+                      </td>
+                      <td class="text-sm font-weight-normal">{{$candidato->id}}</td>
+                      <td class="text-sm font-weight-normal">{{$candidato->nombreCorto}}</td>
+                      <td class="text-sm font-weight-normal">{{$candidato->tipo}}</td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $dep = App\Models\Departamento::find($candidato->idDepartamento); ?>
+                        {{$dep->departamento}}
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        @if ($candidato->tipo == 'Provincial' || $candidato->tipo == 'Distrital')
+                        <?php $prov = App\Models\Provincia::find($candidato->idProvincia); ?>
+                        {{$prov->provincial}}
+                        @else 
+                          ---
+                        @endif
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        @if ($candidato->tipo == 'Distrital')
+                        <?php $dist = App\Models\Distrito::find($candidato->idDistrito); ?>
+                        {{$dist->distrito}}
+                        @else 
+                          ---
+                        @endif
+                      </td>
+                      <td class="text-sm font-weight-normal">
+                        <?php $part = App\Models\Partido::find($candidato->idPartido); ?>
+                        {{$part->partido}}
+                      </td>
+                      <td class="text-sm font-weight-normal">{{$candidato->nombresApellidos}}</td>
+                      <td class="text-sm font-weight-normal">
+                        <img src="{{ asset ('img/fotos/'.$candidato->foto)}}" alt="">
+                      </td>
+                      <td class="text-sm font-weight-normal">{{$candidato->observaciones}}</td>
                     </tr>
                 @endforeach
               </tbody>
