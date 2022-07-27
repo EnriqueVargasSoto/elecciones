@@ -103,7 +103,7 @@
     
   </div>
   <!-- Modal Crear-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -198,9 +198,9 @@
         </form>
       </div>
     </div>
-  </div>
+  </div>--}}
 
-  @foreach ($candidatos as $key => $candidato)
+  {{--@foreach ($candidatos as $key => $candidato)
       <!-- Modal Crear-->
   <div class="modal fade" id="exampleModalEdit{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -301,7 +301,7 @@
       </div>
     </div>
   </div>
-  @endforeach
+  @endforeach--}}
 @endsection
 
 @section('script')
