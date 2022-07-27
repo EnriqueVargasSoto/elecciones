@@ -21,11 +21,11 @@ class CandidatosController extends Controller
     {
         //
         $candidatos = Candidato::where('estado',true)->get();
-        $departamentos = Departamento::where('estado', 'activo')->orderBy('departamento', 'ASC')->get();
-        $provincias = Provincia::where('estado','activo')->orderBy('provincia', 'ASC')->get();
-        $distritos = Distrito::where('estado','activo')->get();
-        $partidos = Partido::where('estado', 'Activo')->orderBy('partido', 'ASC')->get();
-        return view('intranet.pages.empresa.encuestas.candidatos')->with(compact('departamentos','provincias', 'distritos', 'candidatos', 'partidos'));
+        //$departamentos = Departamento::where('estado', 'activo')->orderBy('departamento', 'ASC')->get();
+        //$provincias = Provincia::where('estado','activo')->orderBy('provincia', 'ASC')->get();
+        //$distritos = Distrito::where('estado','activo')->get();
+        //$partidos = Partido::where('estado', 'Activo')->orderBy('partido', 'ASC')->get();
+    return view('intranet.pages.empresa.encuestas.candidatos')->with(compact(/*'departamentos','provincias', 'distritos',*/ 'candidatos'/*, 'partidos'*/));
     }
 
     /**
