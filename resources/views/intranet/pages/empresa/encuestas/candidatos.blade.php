@@ -38,10 +38,10 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($candidatos as $key => $candidato)
+                @foreach ($candidatos as $key => $item)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="#" class="btn btn-danger"> Eliminar </a>
+                        <a href="{{ route('partidos.delete', $item->id)}}" class="btn btn-danger"> Eliminar </a>
                         
                       </td>
                     
