@@ -22,6 +22,7 @@ use App\Http\Controllers\Empresa\ProvinciasController;
 use App\Http\Controllers\Empresa\DistritosController;
 use App\Http\Controllers\Empresa\PartidosController;
 use App\Http\Controllers\Empresa\ZonasController;
+use App\Http\Controllers\Empresa\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,3 +143,10 @@ Route::get('candidatos', [CandidatosController::class, 'index'])->name('candidat
 Route::post('candidatos-store', [CandidatosController::class, 'store'])->name('candidatos.store');
 Route::put('candidatos-update/{id}', [CandidatosController::class, 'update'])->name('candidatos.update');
 Route::get('asd/{id}', [CandidatosController::class, 'destroy'])->name('elimina-candidatos');
+
+
+//roles
+Route::get('roles', [RolController::class, 'index'])->name('roles.index');
+Route::post('roles-store', [RolController::class, 'store'])->name('roles.store');
+Route::put('roles-update/{id}', [RolController::class, 'update'])->name('roles.update');
+Route::get('roles-destroy/{id}', [RolController::class, 'destroy'])->name('roles.delete');

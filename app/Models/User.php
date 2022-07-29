@@ -23,7 +23,8 @@ class User extends Authenticatable
         'idPerfil',
         'email',
         'password',
-        'clave'
+        'clave',
+        'idRegion'
     ];
 
     /**

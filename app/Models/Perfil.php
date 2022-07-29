@@ -27,5 +27,6 @@ class Perfil extends Model
         'empresa',
         'ruc',
         'observaciones',
+        'idUsuarioCreador'
     ];
 }

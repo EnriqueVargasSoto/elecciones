@@ -97,7 +97,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link " aria-controls="rol" role="button" >
+                    <a href="{{ route('roles.index')}}" class="nav-link " aria-controls="rol" role="button" >
                         <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                             <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                         </div>
