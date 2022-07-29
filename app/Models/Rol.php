@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Provincia extends Model
+class Rol extends Model
 {
     use HasFactory;
 
-    protected $table = 'provincias';
-    protected $fillable = [
+    protected $table = 'roles';
+
+    protected $fillable  = [
         'id',
-        'idDepartamento',
-        'provincia',
+        'rol',
+        'idUsuarioCreador',
         'estado'
     ];
 }

@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Departamento extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'departamento', 'estado', 'created_ad', 'updated_at'];
+
+    protected $table = 'departamentos';
+    protected $fillable = [
+        'id',
+        'departamento',
+        'estado'
+    ];
 }

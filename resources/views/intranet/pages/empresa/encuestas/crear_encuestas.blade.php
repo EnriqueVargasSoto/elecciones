@@ -41,8 +41,7 @@
                 @foreach ($candidatos as $key => $candidato)
                     <tr>
                       <td class="text-sm font-weight-normal">
-                        <a href="{{ route('elimina-candidatos', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>
-                        <button type="button" class="btn btn-success" style="float: right" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{$key}}">Editar</button>
+                        {{--<a href="{{ route('provincias.delete', $candidato->id)}}" class="btn btn-danger"> Eliminar </a>--}}
                       </td>
                       <td class="text-sm font-weight-normal">
                         <a href="#" class="btn btn-info"> {{$candidato->visualiza}} </a>
@@ -79,6 +78,7 @@
                         <img src="{{ asset ('img/fotos/'.$candidato->foto)}}" alt="">
                       </td>
                       <td class="text-sm font-weight-normal">{{$candidato->observaciones}}</td>
+                    
                     </tr>
                 @endforeach
               </tbody>
@@ -200,20 +200,19 @@
     </div>
   </div>
 
-  @foreach ($candidatos as $key => $candidato)
+  {{--@foreach ($candidatos as $candidato)
       <!-- Modal Crear-->
-  <div class="modal fade" id="exampleModalEdit{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Candidato</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Crear Candidato</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('candidatos.update', $candidato->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('candidatos.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="modal-body">
               <div class="row">
                 <div class="col-12">
@@ -225,7 +224,6 @@
                 <div class="col-12">
                     <label for="">Tipo</label>
                     <select name="tipo" id="tipo" class="form-control" onchange="selectTipo()">
-                      <option value="{{$candidato->tipo}}">{{$candidato->tipo}}</option>
                       <option value="Regional">Regional</option>
                       <option value="Provincial">Provincial</option>
                       <option value="Distrital">Distrital</option>
@@ -237,8 +235,7 @@
                 <div class="col-12">
                     <label for="">Departamento</label>
                     <select name="idDepartamento" id="idDepartamento" class="form-control" onchange="getProvincias(idDepartamento)">
-                      <?php $departamentoAux = App\Models\Departamento::find($candidato->idDepartamento); ?>
-                        <option value="{{$candidato->idDepartamento}}">{{$departamentoAux->departamento}}</option>
+                      <option value=""></option>
                         @foreach ($departamentos as $departamento)
                         <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
                         @endforeach
@@ -295,13 +292,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+              <button type="submit" class="btn bg-gradient-primary">Crear</button>
             </div>
         </form>
       </div>
     </div>
   </div>
-  @endforeach
+  @endforeach--}}
 @endsection
 
 @section('script')

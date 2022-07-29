@@ -28,7 +28,7 @@ class DistritosImport implements ToModel, WithHeadingRow
         return new Distrito([
             'idDepartamento' => $this->departamento[$row['departamentos']],
             'idProvincia' => $this->provincia[$row['provincias']],
-            'distrito' => $row['distrito'],
+            'distrito' => $row['distritos'],
             'estado' => 'activo'
         ]);
     }
