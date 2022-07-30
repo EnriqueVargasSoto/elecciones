@@ -30,7 +30,7 @@
                                             <div class="invalid-feedback" id="invalidNombreCreate">
                                             </div>
                                         </div>
-                                       
+
                                         <div class="w-100 d-flex justify-content-end">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
                                         </div>
@@ -58,7 +58,7 @@
                                             <div class="invalid-feedback" id="invalidNombreEdit">
                                             </div>
                                         </div>
-                                       
+
                                         <div class="w-100 d-flex justify-content-end">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
                                         </div>
@@ -89,9 +89,7 @@
                                     {{-- <th>Accion</th> --}}
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                          
                         </table>
                     </div>
                 </div>
@@ -138,7 +136,7 @@
                     $("#invalidNombreEdit").html("");
                 }
             });
-           
+
             const validateFormNew = (data) => {
 
                 if (data.nombre) {
@@ -222,21 +220,18 @@
             });
             //fin crear usuario
             customtable = $("#datatable").DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
+             
+                "serverSide": true,
+                "ajax": {
                     "url": "/api/vinculo/pagination",
+                    "type": "POST",
                     "dataSrc": function(data) {
-                        if (data.data == null) {
-                            return [];
-                        } else {
-                            datos = data.data;
-                            return data.data;
-                        }
+                        console.log(data);
+                        datos = data.data;
+                        return data.data;
                     }
                 },
-                pagingType: "numbers",
-                columns: [{
+                "columns": [{
                         data: "id",
                         name: "id",
                         render: function(data) {
@@ -251,13 +246,7 @@
                         data: "nombre",
                         name: "nombre",
                     }
-                ],
-                order: [
-                    [1, "desc"]
-                ],
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
-                },
+                ]
             });
             $("#exportToExcel").on("click", function() {
                 if (typeof XLSX == 'undefined') XLSX = require('xlsx');

@@ -154,22 +154,23 @@ Route::get('roles', [RolController::class, 'index'])->name('roles.index');
 Route::post('roles-store', [RolController::class, 'store'])->name('roles.store');
 Route::put('roles-update/{id}', [RolController::class, 'update'])->name('roles.update');
 Route::get('roles-destroy/{id}', [RolController::class, 'destroy'])->name('roles.delete');
-
-Route::prefix("configuracion")->group(function () {
-    Route::get("cargo", [ConfiguracionController::class, "cargo"])->name("configuracion.cargo");
-    Route::get("funcion", [ConfiguracionController::class, "funcion"])->name("configuracion.funcion");
-    Route::get("estadoEvaluacion", [ConfiguracionController::class, "estadoEvaluacion"])->name("configuracion.estadoEvaluacion");
-    Route::get("vinculo", [ConfiguracionController::class, "vinculo"])->name("configuracion.vinculo");
-    Route::get("tipoUsuario", [ConfiguracionController::class, "tipoUsuario"])->name("configuracion.tipoUsuario");
-    Route::get("tipoUbigeo", [ConfiguracionController::class, "tipoUbigeo"])->name("configuracion.tipoUbigeo");
-    Route::get("tipoActividad", [ConfiguracionController::class, "tipoActividad"])->name("configuracion.tipoActividad");
-    Route::get("area", [ConfiguracionController::class, "area"])->name("configuracion.area");
-    Route::get("prioridad", [ConfiguracionController::class, "prioridad"])->name("configuracion.prioridad");
-    Route::get("estadoGestion", [ConfiguracionController::class, "estadoGestion"])->name("configuracion.estadoGestion");
-    Route::get("usuarioResponsable", [ConfiguracionController::class, "usuarioResponsable"])->name("configuracion.usuarioResponsable");
-    Route::get("estadoActividad", [ConfiguracionController::class, "estadoActividad"])->name("configuracion.estadoActividad");
-    Route::get("estadoProceso", [ConfiguracionController::class, "estadoProceso"])->name("configuracion.estadoProceso");
-    Route::get("personal", [ConfiguracionController::class, "personal"])->name("configuracion.personal");
+Route::group(['middleware' => 'auth'], function () {
+    Route::prefix("configuracion")->group(function () {
+        Route::get("cargo", [ConfiguracionController::class, "cargo"])->name("configuracion.cargo");
+        Route::get("funcion", [ConfiguracionController::class, "funcion"])->name("configuracion.funcion");
+        Route::get("estadoEvaluacion", [ConfiguracionController::class, "estadoEvaluacion"])->name("configuracion.estadoEvaluacion");
+        Route::get("vinculo", [ConfiguracionController::class, "vinculo"])->name("configuracion.vinculo");
+        Route::get("tipoUsuario", [ConfiguracionController::class, "tipoUsuario"])->name("configuracion.tipoUsuario");
+        Route::get("tipoUbigeo", [ConfiguracionController::class, "tipoUbigeo"])->name("configuracion.tipoUbigeo");
+        Route::get("tipoActividad", [ConfiguracionController::class, "tipoActividad"])->name("configuracion.tipoActividad");
+        Route::get("area", [ConfiguracionController::class, "area"])->name("configuracion.area");
+        Route::get("prioridad", [ConfiguracionController::class, "prioridad"])->name("configuracion.prioridad");
+        Route::get("estadoGestion", [ConfiguracionController::class, "estadoGestion"])->name("configuracion.estadoGestion");
+        Route::get("usuarioResponsable", [ConfiguracionController::class, "usuarioResponsable"])->name("configuracion.usuarioResponsable");
+        Route::get("estadoActividad", [ConfiguracionController::class, "estadoActividad"])->name("configuracion.estadoActividad");
+        Route::get("estadoProceso", [ConfiguracionController::class, "estadoProceso"])->name("configuracion.estadoProceso");
+        Route::get("personal", [ConfiguracionController::class, "personal"])->name("configuracion.personal");
+    });
 });
 
 // RUTAS DE ENCUESTAS

@@ -161,12 +161,7 @@
                                     <span class="sidenav-normal"> Funcion <b class="caret"></b></span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link  {{ request()->is('configuracion/personal') ? 'active' : '' }}"
-                                    href="{{ route('configuracion.personal') }}">
-                                    <span class="sidenav-normal"> Personal <b class="caret"></b></span>
-                                </a>
-                            </li>
+                          
     
                             <li class="nav-item ">
                                 <a class="nav-link  {{ request()->is('configuracion/prioridad') ? 'active' : '' }}"
