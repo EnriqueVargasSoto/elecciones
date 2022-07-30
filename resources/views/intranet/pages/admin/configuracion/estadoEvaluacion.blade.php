@@ -223,8 +223,8 @@
             //fin crear usuario
             customtable = $("#datatable").DataTable({
               
-                serverSide: true,
-                ajax: {
+                "serverSide": true,
+                "ajax": {
                     "url": "/api/estadoEvaluacion/pagination",
                     "dataSrc": function(data) {
                         console.log(data);
@@ -232,8 +232,7 @@
                         return data.data;
                     }
                 },
-                pagingType: "numbers",
-                columns: [{
+                "columns": [{
                         data: "id",
                         name: "id",
                         render: function(data) {
@@ -248,13 +247,7 @@
                         data: "nombre",
                         name: "nombre",
                     }
-                ],
-                order: [
-                    [1, "desc"]
-                ],
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
-                },
+                ]
             });
             $("#exportToExcel").on("click", function() {
                 if (typeof XLSX == 'undefined') XLSX = require('xlsx');
