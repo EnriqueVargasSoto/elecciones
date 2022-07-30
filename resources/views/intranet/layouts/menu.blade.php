@@ -301,7 +301,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a ref="#" class="nav-link ">
+                                <a href="{{ route('Encuesta') }}" class="nav-link {{ (request()->is('Encuesta')) ? 'active' : '' }}">
                                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                                         <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                                     </div>
@@ -309,7 +309,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a ref="#" class="nav-link ">
+                                <a href="{{ route('Votos') }}" class="nav-link {{ (request()->is('Votos')) ? 'active' : '' }}">
                                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                                         <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                                     </div>

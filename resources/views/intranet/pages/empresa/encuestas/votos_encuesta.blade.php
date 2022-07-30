@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <h5 class="mb-0">Encuestas</h5>
+                                <h5 class="mb-0">Listado de Votos </h5>
                                 @if (Session('success'))
                                     <div class="alert alert-success  alert-dismissible fade show text-white"
                                         style="font-size: 14px;padding:8px;" role="alert">
@@ -41,102 +41,77 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th style="font-size: .65rem;">IdEncuesta</th>
-                                    <th style="font-size: .65rem;">Nombre Encuesta</th>
-                                    <th style="font-size: .65rem;">Fecha Inicio</th>
-                                    <th style="font-size: .65rem;">Fecha Termino</th>
-                                    <th style="font-size: .65rem;">Observador</th>
-                                    <th style="font-size: .65rem;">Encuesta Manual</th>
+                                    <th style="font-size: .65rem;">Encuesta</th>
+                                    <th style="font-size: .65rem;">Partdido</th>
+                                    <th style="font-size: .65rem;">Candidato</th>
+                                    <th style="font-size: .65rem;">Región</th>
+                                    <th style="font-size: .65rem;">Voto</th>
+                                    <th style="font-size: .65rem;">Tipo de Encuesta</th>
+                                    <th style="font-size: .65rem;">Fecha</th>
                                     <th style="font-size: .65rem;">Estado</th>
                                     <th style="font-size: .65rem;">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($encuestas as $encuesta)
+                                @foreach ($votos as $voto)
                                     <tr style="font-size: 14px;color:black;">
-                                        <td>{{ $encuesta->idEncuesta }}</td>
-                                        <td>{{ $encuesta->nombreEncuesta }}</td>
+                                        <td>{{ $voto->encuesta->idEncuesta }}</td>
                                         <td><span
-                                                class="badge badge-md bg-gradient-success">{{ $encuesta->fechaInicio }}</span>
+                                                class="badge badge-md bg-gradient-success">{{ $voto->encuesta->nombreEncuesta }}</span>
                                         </td>
-                                        <td><span
-                                                class="badge badge-md bg-gradient-dark">{{ $encuesta->fechaTermino }}</span>
-                                        </td>
-                                        <td>{{ $encuesta->observaciones }}</td>
                                         <td>
-                                            @if ($encuesta->encuestaManual == 'Si')
-                                                <span
-                                                    class="badge badge-md bg-gradient-success">{{ $encuesta->encuestaManual }}</span>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="{{ asset('img/logotipos/'.$voto->partido->logotipo)}}" class="avatar avatar-sm me-3"
+                                                        alt="user1">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $voto->partido->partido }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ $voto->partido->observacion }}</p>
+                                                </div>
+                                            </div>                                            
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="{{ asset('img/fotos/'.$voto->candidato->foto)}}" class="avatar avatar-sm me-3"
+                                                        alt="user1">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $voto->candidato->nombresApellidos }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ $voto->candidato->observaciones }}</p>
+                                                </div>
+                                            </div>   
+                                        </td>
+                                        <td><span
+                                            class="badge badge-md bg-gradient-secondary">{{ $voto->region }}</span></td>
+                                        <td><span
+                                            class="badge badge-md bg-gradient-dark">{{ $voto->votos }}</span></td>
+                                        <td><span
+                                            class="badge badge-md bg-gradient-primary">{{ $voto->tipoEncuesta }}</span></td>
+                                        <td><span
+                                            class="badge badge-md bg-gradient-info">{{ $voto->fecha }}</span></td>
+                                        <td>
+                                            @if ($voto->estado == 'Activo')
+                                            <span
+                                            class="badge badge-md bg-gradient-success">{{ $voto->estado }}</span>
                                             @else
-                                                <span
-                                                    class="badge badge-md bg-gradient-danger">{{ $encuesta->encuestaManual }}</span>
+                                            <span
+                                            class="badge badge-md bg-gradient-danger">{{ $voto->estado }}</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($encuesta->estado == 'Activo')
-                                                <span
-                                                    class="badge badge-md bg-gradient-success">{{ $encuesta->estado }}</span>
-                                            @else
-                                                <span
-                                                    class="badge badge-md bg-gradient-danger">{{ $encuesta->estado }}</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                @if (date('Y-m-d') <= $encuesta->fechaTermino)
-                                                    <div class="icon icon-shape icon-sm me-1 bg-gradient-info shadow text-center btnEditar"
-                                                        style="cursor:pointer;" data-item="{{ $encuesta->idEncuesta }}" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Editar">
-                                                        <i class="fas fa-pencil-alt text-white opacity-10 "
-                                                            style="cursor:pointer;"></i>
-                                                    </div>
-                                                @endif
-
-                                                @if (date('Y-m-d') <= $encuesta->fechaTermino)
-                                                    <div class="icon icon-shape icon-sm me-1 bg-gradient-danger shadow text-center btnEliminar"
-                                                        style="cursor:pointer;" data-item="{{ $encuesta->idEncuesta }}" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Eliminar">
-                                                        <i class="far fa-trash-alt text-white opacity-10 "
-                                                            style="cursor:pointer;"></i>
-                                                    </div>
-                                                @endif
-
-
-                                                @if (date('Y-m-d') <= $encuesta->fechaTermino)
-                                                    <a href="#"
-                                                        class="icon icon-shape icon-sm me-1 bg-gradient-dark shadow text-center"
-                                                        style="cursor:pointer;" data-item="{{ $encuesta->idEncuesta }}" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Votos">
-                                                        <i class="fas fa-vote-yea text-white opacity-10 "
-                                                            style="cursor:pointer;"></i>
-                                                    </a>
-                                                @endif
-
-                                                @if (date('Y-m-d') <= $encuesta->fechaTermino)
-                                                    @if ($encuesta->encuestaManual == 'Si')
-                                                        <a href="#"
-                                                            class="icon icon-shape icon-sm me-1 bg-gradient-secondary shadow text-center"
-                                                            style="cursor:pointer;"
-                                                            data-item="{{ $encuesta->idEncuesta }}" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Encuesta Manual">
-                                                            <i class="fas fa-hand-holding-medical text-white opacity-10 "
-                                                                style="cursor:pointer;"></i>
-                                                        </a>
-                                                    @endif
-                                                @endif
-
+                                            <div class="d-flex align-items-center"> 
 
                                                 <a href="#"
                                                     class="icon icon-shape icon-sm me-1 bg-gradient-primary shadow text-center"
-                                                    style="cursor:pointer;" data-item="{{ $encuesta->idEncuesta }}"
+                                                    style="cursor:pointer;" data-item="{{ $voto->encuesta->idEncuesta }}"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Grafico de Votos">
                                                     <i class="fas fa-chart-bar text-white opacity-10 "
                                                         style="cursor:pointer;"></i>
                                                 </a>
                                             </div>
-                                        </td>
-                                        <td>
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -158,8 +133,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('Encuesta.store') }}" method="post" id="forms"
-                    enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form action="{{ route('Encuesta.store') }}" method="post" id="forms" enctype="multipart/form-data"
+                    class="needs-validation" novalidate>
                     @csrf
                     <input type="hidden" name="idencuesta">
                     <div class="modal-body">

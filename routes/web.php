@@ -24,6 +24,9 @@ use App\Http\Controllers\Empresa\DistritosController;
 use App\Http\Controllers\Empresa\PartidosController;
 use App\Http\Controllers\Empresa\ZonasController;
 use App\Http\Controllers\Empresa\RolController;
+use App\Http\Controllers\Empresa\EncuestaController;
+use App\Http\Controllers\Empresa\EncuestaManualController;
+use App\Http\Controllers\Empresa\VotosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -167,4 +170,25 @@ Route::prefix("configuracion")->group(function () {
     Route::get("estadoActividad", [ConfiguracionController::class, "estadoActividad"])->name("configuracion.estadoActividad");
     Route::get("estadoProceso", [ConfiguracionController::class, "estadoProceso"])->name("configuracion.estadoProceso");
     Route::get("personal", [ConfiguracionController::class, "personal"])->name("configuracion.personal");
+});
+
+// RUTAS DE ENCUESTAS
+Route::middleware(['auth'])->controller(EncuestaController::class)->prefix('Encuesta')->group(function(){
+    Route::get('/','index')->name('Encuesta');
+    Route::post('/','store')->name('Encuesta.store');
+    Route::get('/{encuesta}/show','show')->name('Encuesta.show');
+    Route::post('/{encuesta}/update','update')->name('Encuesta.update');
+    Route::get('/{encuesta}/destroy','destroy')->name('Encuesta.destroy');
+});
+
+// RUTAS DE VOTOS
+Route::middleware(['auth'])->controller(VotosController::class)->prefix('Votos')->group(function(){
+    Route::get('/','index')->name('Votos');
+    Route::get('/{encuesta}/Encuestador','encuestador')->name('Votos.encuestador');
+    Route::get('/{encuesta}/Dispositivo','dispositivo')->name('Votos.dispositivo');
+    Route::get('/{encuesta}/Manual','manual')->name('Votos.manual');
+    Route::post('/','store')->name('Votos.store');
+    Route::get('/{encuesta}/show','show')->name('Votos.show');
+    Route::post('/{encuesta}/update','update')->name('Votos.update');
+    Route::get('/{encuesta}/destroy','destroy')->name('Votos.destroy');
 });
