@@ -222,17 +222,14 @@
             });
             //fin crear usuario
             customtable = $("#datatable").DataTable({
-                processing: true,
+               
                 serverSide: true,
                 ajax: {
                     "url": "/api/estadoGestion/pagination",
                     "dataSrc": function(data) {
-                        if (data.data == null) {
-                            return [];
-                        } else {
-                            datos = data.data;
-                            return data.data;
-                        }
+                        console.log(data);
+                        datos = data.data;
+                        return data.data;
                     }
                 },
                 pagingType: "numbers",

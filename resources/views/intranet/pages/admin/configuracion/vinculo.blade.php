@@ -30,7 +30,7 @@
                                             <div class="invalid-feedback" id="invalidNombreCreate">
                                             </div>
                                         </div>
-                                       
+
                                         <div class="w-100 d-flex justify-content-end">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
                                         </div>
@@ -58,7 +58,7 @@
                                             <div class="invalid-feedback" id="invalidNombreEdit">
                                             </div>
                                         </div>
-                                       
+
                                         <div class="w-100 d-flex justify-content-end">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
                                         </div>
@@ -138,7 +138,7 @@
                     $("#invalidNombreEdit").html("");
                 }
             });
-           
+
             const validateFormNew = (data) => {
 
                 if (data.nombre) {
@@ -222,17 +222,14 @@
             });
             //fin crear usuario
             customtable = $("#datatable").DataTable({
-                processing: true,
+             
                 serverSide: true,
                 ajax: {
                     "url": "/api/vinculo/pagination",
                     "dataSrc": function(data) {
-                        if (data.data == null) {
-                            return [];
-                        } else {
-                            datos = data.data;
-                            return data.data;
-                        }
+                        console.log(data);
+                        datos = data.data;
+                        return data.data;
                     }
                 },
                 pagingType: "numbers",

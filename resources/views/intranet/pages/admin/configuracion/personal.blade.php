@@ -891,17 +891,14 @@
         });
         //fin crear usuario
         customtable = $("#datatable").DataTable({
-            processing: true,
+           
             serverSide: true,
             ajax: {
                 "url": "/api/personal/pagination",
                 "dataSrc": function(data) {
-                    if (data.data == null) {
-                        return [];
-                    } else {
+                    console.log(data);
                         datos = data.data;
                         return data.data;
-                    }
                 }
             },
             pagingType: "numbers",
