@@ -253,8 +253,13 @@
                 
                 "serverSide": true,
                 "ajax": {
+                    
+                    "type": "POST",
                     "url": "/api/estadoActividad/pagination",
-                   
+                    "dataSrc": function(json) {
+                        datos = json.data;
+                        return json.data;
+                    },
                 },
                 "columns": [{
                         data: "id",

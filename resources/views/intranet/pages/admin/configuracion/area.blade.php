@@ -252,6 +252,7 @@
                 "serverSide": true,
                 "ajax": {
                     "url": "/api/area/pagination",
+                    "type": "POST",
                     "dataSrc": function(data) {
                         console.log(data);
                         datos = data.data;

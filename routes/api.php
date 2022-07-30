@@ -38,54 +38,54 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('create-user', [UserController::class, 'createUser']);
 
-Route::get("cargo/pagination", [CargoController::class, "pagination"]);
+Route::post("cargo/pagination", [CargoController::class, "pagination"]);
 Route::resource("cargo", CargoController::class);
 
-Route::get("funcion/pagination", [FuncionController::class, "pagination"]);
+Route::post("funcion/pagination", [FuncionController::class, "pagination"]);
 Route::resource("funcion", FuncionController::class);
 
-Route::get("estadoEvaluacion/pagination", [EstadoEvaluacionController::class, "pagination"]);
+Route::post("estadoEvaluacion/pagination", [EstadoEvaluacionController::class, "pagination"]);
 Route::resource("estadoEvaluacion", EstadoEvaluacionController::class);
 
-Route::get("vinculo/pagination", [VinculoController::class, "pagination"]);
+Route::post("vinculo/pagination", [VinculoController::class, "pagination"]);
 Route::resource("vinculo", VinculoController::class);
 
-Route::get("tipoUsuario/pagination", [TipoUsuarioController::class, "pagination"]);
+Route::post("tipoUsuario/pagination", [TipoUsuarioController::class, "pagination"]);
 Route::resource("tipoUsuario", TipoUsuarioController::class);
 
-Route::get("tipoActividad/pagination", [TipoActividadController::class, "pagination"]);
+Route::post("tipoActividad/pagination", [TipoActividadController::class, "pagination"]);
 Route::resource("tipoActividad", TipoActividadController::class);
 
-Route::get("area/pagination", [AreaController::class, "pagination"]);
+Route::post("area/pagination", [AreaController::class, "pagination"]);
 Route::resource("area", AreaController::class);
 
 
-Route::get("prioridad/pagination", [PrioridadController::class, "pagination"]);
+Route::post("prioridad/pagination", [PrioridadController::class, "pagination"]);
 Route::resource("prioridad", PrioridadController::class);
 
-Route::get("tipoUbigeo/pagination", [TipoUbigeoController::class, "pagination"]);
+Route::post("tipoUbigeo/pagination", [TipoUbigeoController::class, "pagination"]);
 Route::resource("tipoUbigeo", TipoUbigeoController::class);
 
 
-Route::get("estadoGestion/pagination", [EstadoGestionController::class, "pagination"]);
+Route::post("estadoGestion/pagination", [EstadoGestionController::class, "pagination"]);
 Route::resource("estadoGestion", EstadoGestionController::class);
 
-Route::get("usuarioResponsable/pagination", [UsuarioResponsableController::class, "pagination"]);
+Route::post("usuarioResponsable/pagination", [UsuarioResponsableController::class, "pagination"]);
 Route::resource("usuarioResponsable", UsuarioResponsableController::class);
 
-Route::get("estadoActividad/pagination", [EstadoActividadController::class, "pagination"]);
+Route::post("estadoActividad/pagination", [EstadoActividadController::class, "pagination"]);
 Route::resource("estadoActividad", EstadoActividadController::class);
 
-Route::get("estadoProceso/pagination", [EstadoProcesoController::class, "pagination"]);
+Route::post("estadoProceso/pagination", [EstadoProcesoController::class, "pagination"]);
 Route::resource("estadoProceso", EstadoProcesoController::class);
 
-Route::get("evaluacion/pagination", [EvaluacionController::class, "pagination"]);
+Route::post("evaluacion/pagination", [EvaluacionController::class, "pagination"]);
 Route::resource("evaluacion", EvaluacionController::class);
 
 Route::post("personal/cv", [PersonalController::class, "uploadCv"]);
 Route::post("personal/image", [PersonalController::class, "uploadImage"]);
 
-Route::get("personal/pagination", [PersonalController::class, "pagination"]);
+Route::post("personal/pagination", [PersonalController::class, "pagination"]);
 Route::resource("personal", PersonalController::class);
 
 Route::get('/departamentos', 'App\Http\Controllers\Api\DepartamentoController@index');

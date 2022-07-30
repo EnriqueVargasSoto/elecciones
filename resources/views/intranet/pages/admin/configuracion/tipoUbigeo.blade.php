@@ -224,6 +224,7 @@
                 "serverSide": true,
                 "ajax": {
                     "url": "/api/tipoUbigeo/pagination",
+                    "type": "POST",
                     "dataSrc": function(data) {
                         console.log(data);
                         datos = data.data;

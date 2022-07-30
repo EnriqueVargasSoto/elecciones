@@ -254,6 +254,7 @@
                 "serverSide": true,
                 "ajax": {
                     "url": "/api/tipoActividad/pagination",
+                    "type": "POST",
                     "dataSrc": function(data) {
                         console.log(data);
                         datos = data.data;
