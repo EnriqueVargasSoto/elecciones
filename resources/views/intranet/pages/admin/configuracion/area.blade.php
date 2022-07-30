@@ -263,9 +263,9 @@
                 "columns": [{
                         data: "id",
                         name: "id",
-                      /*   render: function(data) {
+                        render: function(data) {
                             return ` <i class="fa fa-edit c-p" objectid="${data}" onclick="handleEdit(this)"></i><i class="fa fa-trash c-p text-danger mx-2" onclick="handleDelete(this)" objectid="${data}"></i>`
-                        } */
+                        }
                     },
                     {
                         data: "id",
@@ -278,9 +278,9 @@
                     {
                         data: "color",
                         name: "color",
-                      /*   render: function(data) {
+                        render: function(data) {
                             return `<div style="width:100px;height:10px; background-color:${data}"></div>`
-                        } */
+                        }
                     }
                 ]
             });
