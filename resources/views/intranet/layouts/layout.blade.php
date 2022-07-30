@@ -18,7 +18,7 @@
     <script src="{{ asset('admin/kit.fontawesome.com/42d5adcbca.js')}}" crossorigin="anonymous"></script>
     <link href="{{ asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/datatables.min.css')}}"/>
  
     <link id="pagestyle" href="{{ asset('admin/assets/css/argon-dashboard.min790f.css?v=2.0.1')}}" rel="stylesheet" />
     <!-- Anti-flicker snippet (recommended)  -->
@@ -52,7 +52,7 @@
     <script src="{{ asset('admin/assets/js/core/bootstrap.min.js')}}"></script>
     <script src="{{ asset('admin/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
     <script src="{{ asset('admin/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('admin/assets/js/jquery.min.js')}}" ></script>
     <!-- Kanban scripts -->
     <script src="{{ asset('admin/assets/js/plugins/dragula/dragula.min.js')}}"></script>
     <script src="{{ asset('admin/assets/js/plugins/jkanban/jkanban.js')}}"></script>
@@ -60,10 +60,10 @@
     <!-- Github buttons -->
     <script async defer src="{{ asset('admin/buttons.js')}}"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('admin/assets/js/argon-dashboard.min790f.js?v=2.0.1')}}"></script>
-    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin/assets/js/argon-dashboard.min790f.js?v=2.0.1')}}"></script>{{-- 
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> --}}
 
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    <script type="text/javascript" src="{{asset('admin/assets/js/datatables.min.js') }}"></script>
     @yield('script')
 </body>
 </html>
